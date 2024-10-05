@@ -1,5 +1,5 @@
 import { Api } from "../api";
-import express, { Express, Request } from "express";
+import express, { Express, Request, Response } from "express";
 
 export class ApiExpress implements Api {
   private constructor(readonly app: Express) {}
@@ -10,10 +10,35 @@ export class ApiExpress implements Api {
     return new ApiExpress(app);
   }
 
-  public addGeRoute(
+  public addGetRoute(
     path: string,
     handle: (req: Request, res: Response) => Promise<void>
   ): void {
     this.app.get(path, handle);
+  }
+
+  public addPostRoute(
+    path: string,
+    handle: (req: Request, res: Response) => Promise<void>
+  ): void {
+    this.app.post(path, handle);
+  }
+
+  public async start(port: number): Promise<void> {
+    this.app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+      this.printRouter();
+    });
+  }
+
+  private printRouter() {
+    const routes = this.app._router.stack.filter(
+      (r : any) => r.route).map((r : any) => {
+        return {
+          path: r.route?.path,
+          method: r.route?.stack[0].method,
+        }
+      });
+    console.table(routes);
   }
 }
