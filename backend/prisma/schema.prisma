@@ -21,3 +21,143 @@ model Product {
 
   @@map("products")
 }
+
+
+model Aluno {
+  id                String            @id @default(uuid())
+  nome              String
+  genero            String    
+  data_nascimento   DateTime
+  telefone          String
+  ano_escolar       String
+  alfabetizado      Boolean
+  turno             String
+  turma             String
+  enderecos         Endereco[]         @relation("EnderecoAluno")
+  registrosGerais   RegistroGeral[]    @relation("RegistroGeralAluno")
+  familias          Familia[]          @relation("FamiliaAluno")
+  dadosMae          DadosMae[]         @relation("DadosMaeAluno")
+  dadosAdicionais   DadosAdicionais[]  @relation("DadosAdicionaisAluno")
+  aniversarios      Aniversario[]      @relation("AniversariosAluno")
+  turmas            Turma[]            @relation("TurmasAluno")
+  alunoFamiliar     AlunoFamiliar[]    @relation("AlunoFamiliarAluno")
+
+  @@map("alunos")
+}
+
+model Endereco {
+  id          String   @id @default(uuid())
+  bairro      String
+  rua_numero  String
+  alunoId     String
+  aluno       Aluno    @relation("EnderecoAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+
+  @@map("enderecos")
+}
+
+model Familiar {
+  id                   String            @id @default(uuid())
+  nome                 String
+  parentesco           String
+  telefone             String
+  autorizado_buscar    Boolean
+  responsavel          Boolean
+  alunoFamiliar        AlunoFamiliar[]   @relation("AlunoFamiliarFamiliar")
+  responsavelRegistro  Responsavel[]     @relation("ResponsavelFamiliar")
+
+  @@map("familiares")
+}
+
+model Responsavel {
+  id            String     @id @default(uuid())
+  parentesco    String
+  familiarId    String
+  familiar      Familiar   @relation("ResponsavelFamiliar", fields: [familiarId], references: [id], onDelete: Cascade)
+  registros     RegistroGeral[]
+
+  @@map("responsaveis")
+}
+
+model RegistroGeral {
+  id               String      @id @default(uuid())
+  cpf              String      @unique
+  rg               String
+  data_emissao_rg  DateTime
+  renda_familiar   Float
+  bolsa_familia    Boolean
+  direito_imagem   Boolean
+  alunoId          String
+  aluno            Aluno       @relation("RegistroGeralAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+  responsavelId    String
+  responsavel      Responsavel @relation(fields: [responsavelId], references: [id], onDelete: Cascade)
+
+  @@map("registros_gerais")
+}
+
+model Familia {
+  id                  String     @id @default(uuid())
+  numero_filhos       Int
+  irmao_instituicao   Boolean
+  alunoId             String
+  aluno               Aluno      @relation("FamiliaAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+
+  @@map("familias")
+}
+
+model DadosMae {
+  id                         String     @id @default(uuid())
+  trabalha_fora               Boolean
+  com_quem_deixar             String
+  interesse_culinaria_costura  Boolean
+  qual_projeto                String?
+  alunoId                     String
+  aluno                       Aluno      @relation("DadosMaeAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+
+  @@map("dados_maes")
+}
+
+model DadosAdicionais {
+  id               String     @id @default(uuid())
+  cpf_nota_fiscal  Boolean
+  tipo_residencia  String
+  numero_comodos   Int
+  possui_banheiro  Boolean
+  possui_agua      Boolean
+  possui_luz       Boolean
+  alunoId          String
+  aluno            Aluno       @relation("DadosAdicionaisAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+
+  @@map("dados_adicionais")
+}
+
+model Aniversario {
+  id              String     @id @default(uuid())
+  data_aniversario DateTime
+  alunoId         String
+  aluno           Aluno       @relation("AniversariosAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+
+  @@map("aniversarios")
+}
+
+model Turma {
+  id           String     @id @default(uuid())
+  nome_turma   String
+  idade        Int
+  turno        String
+  escola       String
+  renda_mensal Float
+  alunoId      String
+  aluno        Aluno       @relation("TurmasAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+
+  @@map("turmas")
+}
+
+model AlunoFamiliar {
+  id          String    @id @default(uuid())
+  alunoId     String
+  aluno       Aluno     @relation("AlunoFamiliarAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+  familiarId  String
+  familiar    Familiar  @relation("AlunoFamiliarFamiliar", fields: [familiarId], references: [id], onDelete: Cascade)
+
+  @@map("alunos_familiares")
+}

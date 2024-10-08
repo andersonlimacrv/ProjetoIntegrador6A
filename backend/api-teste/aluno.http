@@ -1,0 +1,30 @@
+# Testes de Aluno (Arquivo aluno.http)
+
+### 1. Listar todos os alunos
+GET http://localhost:8000/alunos
+
+### 2. Criar um novo aluno
+POST http://localhost:8000/aluno/create
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "genero": "Masculino",
+  "dataNascimento": "2010-05-12T00:00:00.000Z",
+  "telefone": "99999-9999",
+  "anoEscolar": "5º Ano",
+  "alfabetizado": true,
+  "turno": "Manhã",
+  "turma": "Turma A"
+}
+
+### 3. Atualizar telefone de um aluno (necessário implementar a rota)
+POST http://localhost:8000/aluno/update
+Content-Type: application/json
+
+{
+  "id": "aluno-id-exemplo",
+  "telefone": "88888-8888"
+}
+
+
