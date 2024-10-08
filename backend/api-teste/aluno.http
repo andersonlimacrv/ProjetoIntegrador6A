@@ -1,4 +1,3 @@
-# Testes de Aluno (Arquivo aluno.http)
 
 ### 1. Listar todos os alunos
 GET http://localhost:8000/alunos
@@ -18,13 +17,20 @@ Content-Type: application/json
   "turma": "Turma A"
 }
 
-### 3. Atualizar telefone de um aluno (necessário implementar a rota)
-POST http://localhost:8000/aluno/update
+### 3. Atualizar um aluno
+PUT http://localhost:8000/aluno/14fa64a7-6aa8-4c33-9f2b-f29359aed599
 Content-Type: application/json
 
 {
-  "id": "aluno-id-exemplo",
-  "telefone": "88888-8888"
+  "nome": "João Silva Atualizado",
+  "genero": "Masculino",
+  "dataNascimento": "2010-05-12T00:00:00.000Z",
+  "telefone": "88888-8888",
+  "anoEscolar": "6º Ano",
+  "alfabetizado": true,
+  "turno": "Tarde",
+  "turma": "Turma B"
 }
 
-
+### 4. Deletar um aluno
+DELETE http://localhost:8000/aluno/14fa64a7-6aa8-4c33-9f2b-f29359aed599

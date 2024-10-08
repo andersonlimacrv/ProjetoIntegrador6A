@@ -7,4 +7,5 @@ export interface AlunoRepository {
   update(aluno: Aluno): Promise<void>;
   findById(id: string): Promise<Aluno | null>;
   list(): Promise<Aluno[]>;
+  deleteById(id: string): Promise<void>;
 }

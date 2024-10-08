@@ -61,7 +61,7 @@ export class Aluno {
     });
   }
 
-  // Getters para acessar os dados de forma encapsulada
+ 
   public get id() {
     return this.props.id;
   }

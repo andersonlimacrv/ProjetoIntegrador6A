@@ -7,6 +7,7 @@ import {
 } from "../aluno.service";
 import { AlunoRepository } from "../../../repositories/aluno/aluno.repository";
 import { Aluno } from "../../../entities/aluno";
+import { HttpError } from "../../../api/error/http.error";
 
 export class AlunoServiceImplementation implements AlunoService {
   private constructor(readonly repository: AlunoRepository) {}
@@ -14,7 +15,6 @@ export class AlunoServiceImplementation implements AlunoService {
   public static build(repository: AlunoRepository) {
     return new AlunoServiceImplementation(repository);
   }
-
 
   public async create(
     nome: string,
@@ -47,6 +47,7 @@ export class AlunoServiceImplementation implements AlunoService {
     return output;
   }
 
+  // Listagem de alunos
   public async list(): Promise<AlunoListOutputDto> {
     const alunos = await this.repository.list();
     const output = {
@@ -67,19 +68,37 @@ export class AlunoServiceImplementation implements AlunoService {
 
   public async update(
     id: string,
-    telefone: string
+    nome: string,
+    genero: string,
+    dataNascimento: Date,
+    telefone: string,
+    anoEscolar: string,
+    alfabetizado: boolean,
+    turma: string,
+    turno: string
   ): Promise<AlunoUpdateOutputDto> {
     const aluno = await this.repository.findById(id);
     if (!aluno) {
-      throw new Error("Aluno" + id + " não encontrado");
+      throw new HttpError(`Aluno ${id} não encontrado`, 404);
     }
-    aluno.atualizarTelefone(telefone);
-    await this.repository.update(aluno);
-
+    const updatedAluno = Aluno.with(
+      id,
+      nome,
+      genero,
+      dataNascimento,
+      telefone,
+      anoEscolar,
+      alfabetizado,
+      turma,
+      turno
+    );
+    await this.repository.save(updatedAluno);
     const output: AlunoUpdateOutputDto = {
-      id: aluno.id,
-      nome: aluno.nome,
-      telefone: aluno.telefone,
+      id: updatedAluno.id,
+      nome: updatedAluno.nome,
+      anoEscolar: updatedAluno.anoEscolar,
+      turma: updatedAluno.turma,
+      turno: updatedAluno.turno,
     };
     return output;
   }
@@ -87,7 +106,7 @@ export class AlunoServiceImplementation implements AlunoService {
   public async findById(id: string): Promise<AlunoDetailOutputDto> {
     const aluno = await this.repository.findById(id);
     if (!aluno) {
-      throw new Error("Aluno" + id + " não encontrado");
+      throw new HttpError(`Aluno ${id} não encontrado`, 404);
     }
     const output: AlunoDetailOutputDto = {
       id: aluno.id,
@@ -101,5 +120,13 @@ export class AlunoServiceImplementation implements AlunoService {
       turno: aluno.turno,
     };
     return output;
+  }
+
+  public async deleteById(id: string): Promise<void> {
+    const aluno = await this.repository.findById(id);
+    if (!aluno) {
+      throw new HttpError(`Aluno ${id} não encontrado`, 404);
+    }
+    await this.repository.deleteById(id);
   }
 }

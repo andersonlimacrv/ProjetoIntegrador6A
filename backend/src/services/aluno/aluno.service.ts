@@ -1,3 +1,6 @@
+import { Aluno } from "../../entities/aluno";
+
+
 export type AlunoCreateOutputDto = {
   id: string;
   nome: string;
@@ -22,7 +25,9 @@ export type AlunoListOutputDto = {
 export type AlunoUpdateOutputDto = {
   id: string;
   nome: string;
-  telefone: string;
+  anoEscolar: string;
+  turma: string;
+  turno: string;
 };
 
 export type AlunoDetailOutputDto = {
@@ -51,7 +56,18 @@ export interface AlunoService {
 
   list(): Promise<AlunoListOutputDto>;
 
-  update(id: string, telefone: string): Promise<AlunoUpdateOutputDto>;
+  update(
+    id: string,
+    nome: string,
+    genero: string,
+    dataNascimento: Date,
+    telefone: string,
+    anoEscolar: string,
+    alfabetizado: boolean,
+    turma: string,
+    turno: string
+  ): Promise<AlunoUpdateOutputDto>;
 
   findById(id: string): Promise<AlunoDetailOutputDto>;
+  deleteById(id: string): Promise<void>;
 }

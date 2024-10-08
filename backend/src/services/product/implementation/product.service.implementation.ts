@@ -19,7 +19,7 @@ export class ProductServiceImplementation implements ProductService {
     if (!product) {
       throw new Error("Product " + id + "not found");
     } else {
-      try {
+      
         product.sell(amount);
         await this.repository.update(product);
 
@@ -29,9 +29,7 @@ export class ProductServiceImplementation implements ProductService {
         };
 
         return output;
-      } catch (error) {
-        throw new Error("Something went wrong.");
-      }
+     
     }
   }
   public async buy(id: string, amount: number): Promise<BuyOutputDto> {
