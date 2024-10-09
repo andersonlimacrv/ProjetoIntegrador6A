@@ -47,7 +47,6 @@ export class AlunoServiceImplementation implements AlunoService {
     return output;
   }
 
-  // Listagem de alunos
   public async list(): Promise<AlunoListOutputDto> {
     const alunos = await this.repository.list();
     const output = {

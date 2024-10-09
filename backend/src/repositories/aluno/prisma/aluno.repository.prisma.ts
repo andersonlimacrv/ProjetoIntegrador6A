@@ -62,17 +62,17 @@ export class AlunoRepositoryPrisma implements AlunoRepository {
     if (!data) {
       return [];
     }
-    return data.map((aluno) =>
+    return data.map((a) =>
       Aluno.with(
-        aluno.id,
-        aluno.nome,
-        aluno.genero,
-        aluno.data_nascimento,
-        aluno.telefone,
-        aluno.ano_escolar,
-        aluno.alfabetizado,
-        aluno.turno,
-        aluno.turma
+        a.id,
+        a.nome,
+        a.genero,
+        a.data_nascimento,
+        a.telefone,
+        a.ano_escolar,
+        a.alfabetizado,
+        a.turno,
+        a.turma
       )
     );
   }
