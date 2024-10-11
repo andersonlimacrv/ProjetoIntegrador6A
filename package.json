@@ -1,0 +1,17 @@
+{
+  "name": "projetointegrador6a",
+  "version": "1.0.0",
+  "description": "ProjetoIntegrador6A",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-deps": "npm install --prefix frontend && npm install --prefix backend",
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
