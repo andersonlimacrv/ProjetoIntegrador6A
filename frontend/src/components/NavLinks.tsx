@@ -11,7 +11,7 @@ const NavLinks: React.FC = () => {
         <div
           className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/dashboard"
-              ? "bg-muted-foreground text-primary"
+              ? "bg-muted text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -23,7 +23,7 @@ const NavLinks: React.FC = () => {
         <div
           className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page1"
-              ? "bg-muted-foreground text-primary"
+              ? "bg-muted text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -35,7 +35,7 @@ const NavLinks: React.FC = () => {
         <div
           className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page2"
-              ? "bg-muted-foreground text-primary"
+              ? "bg-muted text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -47,7 +47,7 @@ const NavLinks: React.FC = () => {
         <div
           className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page3"
-              ? "bg-muted-foreground text-primary"
+              ? "bg-muted text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
