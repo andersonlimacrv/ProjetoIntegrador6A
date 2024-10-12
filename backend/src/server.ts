@@ -11,8 +11,8 @@ function main(){
   api.addDeleteRoute("/aluno/:id", alunoController.delete);
   api.addPutRoute("/aluno/:id", alunoController.update);
   
-
-  api.start(8000);
+  const PORT: number = Number(process.env.BACKEND_PORT) || 3000;
+  api.start(PORT);
 
 }
 
