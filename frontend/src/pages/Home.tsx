@@ -12,8 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"; // Import Toastify
-import "react-toastify/dist/ReactToastify.css"; // Toastify CSS
+import { toast } from "react-hot-toast";
 
 interface HomeProps {
   onLogin: (username: string, password: string) => void;
@@ -28,15 +27,11 @@ const Home: React.FC<HomeProps> = ({ onLogin }) => {
   const handleSubmit = () => {
     if (username === "usuario" && password === "12345") {
       onLogin(username, password);
-      toast.success("Logado com sucesso!", {
-        position: "bottom-right",
-      });
+      toast.success("Logado com sucesso!");
       setIsDialogOpen(false);
       navigate("/in/dashboard"); // Redireciona para o dashboard
     } else {
-      toast.error("Credenciais incorretas!", {
-        position: "bottom-right",
-      });
+      toast.error("Credenciais incorretas!");
     }
   };
 

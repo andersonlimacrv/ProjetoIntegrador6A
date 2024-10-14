@@ -12,9 +12,9 @@ import Page2 from "@/pages/dashboard/Page2";
 import Page3 from "@/pages/dashboard/Page3";
 import Dashboard from "./pages/dashboard";
 
-// Importando Toastify
-import { ToastContainer, toast } from "react-toastify";
 import { ThemeProvider } from "./components/providers/theme-provider";
+import Toast from "./components/ui/Toast";
+import toast from 'react-hot-toast';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,19 +23,18 @@ function App() {
     if (username === "usuario" && password === "12345") {
       setIsAuthenticated(true);
     } else {
-      alert("Credenciais incorretas!");
+      toast.error("Credenciais incorretas!");
     }
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    toast.success("Deslogado com sucesso!", {
-      position: "bottom-right",
-    });
+    toast.success("Logout efetuado com sucesso!");
   };
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Toast/>
       <Router>
         <Routes>
           <Route path="/" element={<Home onLogin={handleLogin} />} />
@@ -57,7 +56,6 @@ function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-        <ToastContainer />
       </Router>
     </ThemeProvider>
   );
