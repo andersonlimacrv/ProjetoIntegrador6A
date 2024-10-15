@@ -2,7 +2,9 @@ import { Request, Response } from "express";
 import { EnderecoRepositoryPrisma } from "../../../repositories/endereco/prisma/endereco.repository.prisma";
 import { prisma } from "../../../utils/prisma.util";
 import { EnderecoServiceImplementation } from "../../../services/endereco/implementation/endereco.service.implementation";
+import { AlunoServiceImplementation } from "../../../services/aluno/implementation/aluno.service.implementation";
 import { HttpError } from "../../error/http.error";
+import { AlunoRepositoryPrisma } from "../../../repositories/aluno/prisma/aluno.repository.prisma";
 
 export class EnderecoController {
   private constructor() {}
@@ -26,6 +28,14 @@ export class EnderecoController {
 
       const eRepository = EnderecoRepositoryPrisma.build(prisma);
       const eService = EnderecoServiceImplementation.build(eRepository);
+
+      const aRepository = AlunoRepositoryPrisma.build(prisma);
+      const aService = AlunoServiceImplementation.build(aRepository);
+
+      const alunoExists = await aService.findById(alunoId);
+      if (!alunoExists) {
+        throw new HttpError("Aluno não encontrado", 404);
+      }
 
       const output = await eService.create(
         cep,
