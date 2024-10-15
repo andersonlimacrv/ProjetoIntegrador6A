@@ -76,6 +76,7 @@ export class AlunoServiceImplementation implements AlunoService {
     turma: string,
     turno: string
   ): Promise<AlunoUpdateOutputDto> {
+    
     const aluno = await this.repository.findById(id);
     if (!aluno) {
       throw new HttpError(`Aluno ${id} não encontrado`, 404);
@@ -91,7 +92,7 @@ export class AlunoServiceImplementation implements AlunoService {
       turma,
       turno
     );
-    await this.repository.save(updatedAluno);
+    await this.repository.update(updatedAluno);
     const output: AlunoUpdateOutputDto = {
       id: updatedAluno.id,
       nome: updatedAluno.nome,

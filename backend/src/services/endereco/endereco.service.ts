@@ -9,8 +9,8 @@ export type EnderecoCreateOutputDto = {
   bairro: string;
   cidade: string;
   uf: string;
-  complemento?: string;
   alunoId: string;
+  complemento?: string;
 }
 
 export type EnderecoOutputDto = {
@@ -35,8 +35,8 @@ export type EnderecoListOutputDto = {
     bairro: string;
     cidade: string;
     uf: string;
-    complemento?: string;
     alunoId: string;
+    complemento?: string;
   }[];
 }
 
@@ -48,7 +48,7 @@ export interface EnderecoService {
     bairro: string,
     cidade: string,
     uf: string,
-    aluno: Aluno,
+    alunoId: string,
     complemento?: string
   ): Promise<EnderecoCreateOutputDto>;
   list(): Promise<EnderecoListOutputDto>;
@@ -61,6 +61,7 @@ export interface EnderecoService {
     bairro: string,
     cidade: string,
     uf: string,
+    alunoId: string,
     complemento?: string
   ): Promise<EnderecoOutputDto>;
 

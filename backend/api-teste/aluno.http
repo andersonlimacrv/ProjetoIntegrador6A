@@ -1,9 +1,9 @@
 
 ### 1. Listar todos os alunos
-GET http://localhost:8000/alunos
+GET http://localhost:3000/alunos
 
 ### 2. Criar um novo aluno
-POST http://localhost:8000/aluno/create
+POST http://localhost:3000/aluno/create
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### 3. Atualizar um aluno
-PUT http://localhost:8000/aluno/14fa64a7-6aa8-4c33-9f2b-f29359aed599
+PUT http://localhost:3000/aluno/93afca09-e0a6-4640-ac45-35763f2c02c6
 Content-Type: application/json
 
 {
@@ -26,11 +26,11 @@ Content-Type: application/json
   "genero": "Masculino",
   "dataNascimento": "2010-05-12T00:00:00.000Z",
   "telefone": "88888-8888",
-  "anoEscolar": "6º Ano",
+  "anoEscolar": "7º Ano",
   "alfabetizado": true,
   "turno": "Tarde",
   "turma": "Turma B"
 }
 
 ### 4. Deletar um aluno
-DELETE http://localhost:8000/aluno/14fa64a7-6aa8-4c33-9f2b-f29359aed599
+DELETE http://localhost:3000/aluno/ebcbc158-6416-4cce-b57a-8985b574496b

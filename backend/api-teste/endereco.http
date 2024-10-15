@@ -1,0 +1,35 @@
+### 1. Listar todos os endereços
+GET http://localhost:3000/enderecos
+
+### 2. Criar um novo endereço
+POST http://localhost:3000/endereco/create
+Content-Type: application/json
+
+{
+  "cep": "12345-678",
+  "logradouro": "Rua das Flores",
+  "logradouroNumero": "123",
+  "complemento": "Apt 101",
+  "bairro": "Centro",
+  "cidade": "São Paulo",
+  "uf": "SP",
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31"
+}
+
+### 3. Atualizar um endereço
+PUT http://localhost:3000/endereco/d1c4e414-6eb6-442d-8882-4f8eb39c7dc4
+Content-Type: application/json
+
+{
+  "alunoId": "93afca09-e0a6-4640-ac45-35763f2c02c6",
+  "cep": "98765-432",
+  "logradouro": "Avenida Brasil",
+  "logradouroNumero": "456",
+  "complemento": "Bloco B",
+  "bairro": "Jardins",
+  "cidade": "São Paulo",
+  "uf": "SP"
+}
+
+### 4. Deletar um endereço
+DELETE http://localhost:3000/endereco/5842acc6-ea80-453a-ae62-454961e026f5

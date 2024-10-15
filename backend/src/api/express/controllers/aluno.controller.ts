@@ -2,7 +2,9 @@ import { Request, Response } from "express";
 import { AlunoRepositoryPrisma } from "../../../repositories/aluno/prisma/aluno.repository.prisma";
 import { prisma } from "../../../utils/prisma.util";
 import { AlunoServiceImplementation } from "../../../services/aluno/implementation/aluno.service.implementation";
-import { HttpError } from "./../../error/http.error";
+import { HttpError } from "../../error/http.error";
+
+// Unificação dos controladores Aluno e Endereço
 
 export class AlunoController {
   private constructor() {}
@@ -98,7 +100,7 @@ export class AlunoController {
 
       const alunoExists = await aService.findById(id);
       if (!alunoExists) {
-        throw new HttpError("Aluno não encontrado", 404); // Lança HttpError
+        throw new HttpError("Aluno não encontrado", 404);
       }
 
       const output = await aService.update(
@@ -131,7 +133,7 @@ export class AlunoController {
     try {
       const alunoExists = await aService.findById(id);
       if (!alunoExists) {
-        throw new HttpError("Aluno não encontrado", 404); // Lança HttpError
+        throw new HttpError("Aluno não encontrado", 404);
       }
 
       await aService.deleteById(id);
@@ -142,6 +144,6 @@ export class AlunoController {
       } else {
         response.status(500).json({ error: "Erro ao deletar aluno" });
       }
-    }
+    }  
   }
 }

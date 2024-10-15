@@ -23,7 +23,7 @@ export class EnderecoServiceImplementation implements EnderecoService {
     bairro: string,
     cidade: string,
     uf: string,
-    aluno: Aluno,
+    alunoId: string,
     complemento?: string
   ): Promise<EnderecoCreateOutputDto> {
     const address = Endereco.create(
@@ -33,7 +33,7 @@ export class EnderecoServiceImplementation implements EnderecoService {
       bairro,
       cidade,
       uf,
-      aluno.id,
+      alunoId,
       complemento
     );
     await this.repository.save(address);
@@ -78,6 +78,7 @@ export class EnderecoServiceImplementation implements EnderecoService {
     bairro: string,
     cidade: string,
     uf: string,
+    alunoId: string,
     complemento?: string
   ): Promise<EnderecoOutputDto> {
     const address = await this.repository.findById(id);
@@ -92,10 +93,10 @@ export class EnderecoServiceImplementation implements EnderecoService {
       bairro,
       cidade,
       uf,
-      address.alunoId,
+      alunoId,
       complemento
-    )
-    await this.repository.save(newAddress);
+    );
+    await this.repository.update(newAddress);
     const output: EnderecoOutputDto = {
       id: newAddress.id,
       cep: newAddress.cep,
@@ -104,11 +105,10 @@ export class EnderecoServiceImplementation implements EnderecoService {
       bairro: newAddress.bairro,
       cidade: newAddress.cidade,
       uf: newAddress.uf,
-      complemento: newAddress.complemento,
       alunoId: newAddress.alunoId,
+      complemento: newAddress.complemento,
     };
     return output;
-    
   }
 
   public async findById(id: string): Promise<EnderecoOutputDto> {
@@ -124,8 +124,8 @@ export class EnderecoServiceImplementation implements EnderecoService {
       bairro: address.bairro,
       cidade: address.cidade,
       uf: address.uf,
-      complemento: address.complemento,
       alunoId: address.alunoId,
+      complemento: address.complemento,
     };
   }
 
@@ -135,7 +135,6 @@ export class EnderecoServiceImplementation implements EnderecoService {
       throw new HttpError("Endereço não encontrado", 404);
     }
     await this.repository.deleteById(id);
-
   }
 
   public async findByAlunoId(
@@ -153,8 +152,8 @@ export class EnderecoServiceImplementation implements EnderecoService {
       bairro: address.bairro,
       cidade: address.cidade,
       uf: address.uf,
-      complemento: address.complemento,
       alunoId: address.alunoId,
+      complemento: address.complemento,
     };
   }
 }
