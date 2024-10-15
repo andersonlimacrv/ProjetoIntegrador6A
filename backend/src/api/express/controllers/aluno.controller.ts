@@ -22,7 +22,7 @@ export class AlunoController {
         telefone,
         anoEscolar,
         alfabetizado,
-        turma,
+        turmaId,
         turno,
       } = request.body;
 
@@ -36,7 +36,7 @@ export class AlunoController {
         telefone,
         anoEscolar,
         alfabetizado,
-        turma,
+        turmaId,
         turno
       );
 
@@ -47,7 +47,7 @@ export class AlunoController {
         dataNascimento,
         telefone,
         anoEscolar,
-        turma,
+        turmaId,
         turno,
       };
 
@@ -91,7 +91,7 @@ export class AlunoController {
         telefone,
         anoEscolar,
         alfabetizado,
-        turma,
+        turmaId,
         turno,
       } = request.body;
 
@@ -111,7 +111,7 @@ export class AlunoController {
         telefone,
         anoEscolar,
         alfabetizado,
-        turma,
+        turmaId,
         turno
       );
 

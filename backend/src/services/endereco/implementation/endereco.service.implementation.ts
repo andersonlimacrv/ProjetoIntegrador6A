@@ -6,7 +6,6 @@ import {
 } from "../endereco.service";
 import { EnderecoRepository } from "../../../repositories/endereco/endereco.repository";
 import { Endereco } from "../../../entities/endereco";
-import { Aluno } from "../../../entities/aluno";
 import { HttpError } from "../../../api/error/http.error";
 
 export class EnderecoServiceImplementation implements EnderecoService {

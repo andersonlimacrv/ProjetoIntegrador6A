@@ -14,7 +14,7 @@ Content-Type: application/json
   "anoEscolar": "5º Ano",
   "alfabetizado": true,
   "turno": "Manhã",
-  "turma": "Turma A"
+  "turmaId":"06652edb-2dfa-4ff9-b4f4-4e44179a4bd6"
 }
 
 ### 3. Atualizar um aluno
@@ -28,8 +28,7 @@ Content-Type: application/json
   "telefone": "88888-8888",
   "anoEscolar": "7º Ano",
   "alfabetizado": true,
-  "turno": "Tarde",
-  "turma": "Turma B"
+  "turno": "Tarde"
 }
 
 ### 4. Deletar um aluno

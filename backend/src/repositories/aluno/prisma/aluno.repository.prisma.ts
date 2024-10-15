@@ -19,7 +19,7 @@ export class AlunoRepositoryPrisma implements AlunoRepository {
       ano_escolar: aluno.anoEscolar,
       alfabetizado: aluno.alfabetizado,
       turno: aluno.turno,
-      turma: aluno.turma,
+      turmaId: aluno.turmaId, 
     };
     await this.prisma.aluno.create({ data });
   }
@@ -34,16 +34,21 @@ export class AlunoRepositoryPrisma implements AlunoRepository {
       ano_escolar: aluno.anoEscolar,
       alfabetizado: aluno.alfabetizado,
       turno: aluno.turno,
-      turma: aluno.turma,
+      turmaId: aluno.turmaId,
     };
     await this.prisma.aluno.update({ where: { id: data.id }, data });
   }
 
   public async findById(id: string): Promise<Aluno | null> {
-    const data = await this.prisma.aluno.findUnique({ where: { id } });
+    const data = await this.prisma.aluno.findUnique({
+      where: { id },
+      include: { turma: true },
+    });
+
     if (!data) {
       return null;
     }
+
     return Aluno.with(
       data.id,
       data.nome,
@@ -53,15 +58,19 @@ export class AlunoRepositoryPrisma implements AlunoRepository {
       data.ano_escolar,
       data.alfabetizado,
       data.turno,
-      data.turma
+      data.turmaId || ""
     );
   }
 
   public async list(): Promise<Aluno[]> {
-    const data = await this.prisma.aluno.findMany();
+    const data = await this.prisma.aluno.findMany({
+      include: { turma: true }, 
+    });
+
     if (!data) {
       return [];
     }
+
     return data.map((a) =>
       Aluno.with(
         a.id,
@@ -72,13 +81,12 @@ export class AlunoRepositoryPrisma implements AlunoRepository {
         a.ano_escolar,
         a.alfabetizado,
         a.turno,
-        a.turma
+        a.turmaId || ""
       )
     );
   }
 
   public async deleteById(id: string): Promise<void> {
     await this.prisma.aluno.delete({ where: { id } });
-
   }
 }

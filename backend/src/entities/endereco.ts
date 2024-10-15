@@ -1,5 +1,3 @@
-import { UUID } from "crypto"
-
 export type EnderecoProps = {
   id: string
   cep: string

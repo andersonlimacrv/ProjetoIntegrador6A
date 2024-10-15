@@ -7,7 +7,7 @@ export type AlunoProps = {
   anoEscolar: string;
   alfabetizado: boolean;
   turno: string;
-  turma: string;
+  turmaId: string;
 };
 
 export class Aluno {
@@ -21,7 +21,7 @@ export class Aluno {
     anoEscolar: string,
     alfabetizado: boolean,
     turno: string,
-    turma: string
+    turmaId: string
   ) {
     return new Aluno({
       id: crypto.randomUUID().toString(),
@@ -32,11 +32,10 @@ export class Aluno {
       anoEscolar,
       alfabetizado,
       turno,
-      turma,
+      turmaId,
     });
   }
 
-  
   public static with(
     id: string,
     nome: string,
@@ -46,7 +45,7 @@ export class Aluno {
     anoEscolar: string,
     alfabetizado: boolean,
     turno: string,
-    turma: string
+    turmaId: string
   ) {
     return new Aluno({
       id,
@@ -57,11 +56,10 @@ export class Aluno {
       anoEscolar,
       alfabetizado,
       turno,
-      turma,
+      turmaId,
     });
   }
 
- 
   public get id() {
     return this.props.id;
   }
@@ -94,17 +92,17 @@ export class Aluno {
     return this.props.turno;
   }
 
-  public get turma() {
-    return this.props.turma;
+  // Getter atualizado para expor turmaId
+  public get turmaId() {
+    return this.props.turmaId;
   }
-
 
   public atualizarTelefone(novoTelefone: string) {
     this.props.telefone = novoTelefone;
   }
 
   public alterarTurma(novaTurma: string) {
-    this.props.turma = novaTurma;
+    this.props.turmaId = novaTurma;
   }
 
   public alterarTurno(novoTurno: string) {

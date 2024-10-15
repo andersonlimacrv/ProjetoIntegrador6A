@@ -22,14 +22,14 @@ model Aluno {
   ano_escolar     String
   alfabetizado    Boolean
   turno           String
-  turma           String
+  turmaId         String?          
+  turma           Turma?            @relation("TurmasAluno", fields: [turmaId], references: [id]) // 1:N
   enderecos       Endereco[]        @relation("EnderecoAluno")
   registrosGerais RegistroGeral[]   @relation("RegistroGeralAluno")
   familias        Familia[]         @relation("FamiliaAluno")
   dadosMae        DadosMae[]        @relation("DadosMaeAluno")
   dadosAdicionais DadosAdicionais[] @relation("DadosAdicionaisAluno")
   aniversarios    Aniversario[]     @relation("AniversariosAluno")
-  turmas          Turma[]           @relation("TurmasAluno")
   alunoFamiliar   AlunoFamiliar[]   @relation("AlunoFamiliarAluno")
 
   @@map("alunos")
@@ -135,14 +135,13 @@ model Aniversario {
 }
 
 model Turma {
-  id           String @id @default(uuid())
+  id           String  @id @default(uuid())
   nome_turma   String
   idade        Int
   turno        String
   escola       String
   renda_mensal Float
-  alunoId      String
-  aluno        Aluno  @relation("TurmasAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+  alunos       Aluno[] @relation("TurmasAluno") // Relacionamento 1:N com Aluno
 
   @@map("turmas")
 }

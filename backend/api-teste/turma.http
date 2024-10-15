@@ -1,0 +1,29 @@
+### 1. Listar todas as turmas
+GET http://localhost:3000/turmas
+
+### 2. Criar uma nova turma
+POST http://localhost:3000/turma/create
+Content-Type: application/json
+
+{
+  "nomeTurma": "Turma A",
+  "idade": 10,
+  "turno": "Manhã",
+  "escola": "Escola Municipal",
+  "rendaMensal": 2000
+}
+
+### 3. Atualizar uma turma
+PUT http://localhost:3000/turma/d5419032-ee8a-471d-b4eb-78aa17476a94
+Content-Type: application/json
+
+{
+  "nomeTurma": "Turma A Atualizada",
+  "idade": 11,
+  "turno": "Tarde",
+  "escola": "Escola Estadual",
+  "rendaMensal": 2500
+}
+
+### 4. Deletar uma turma
+DELETE http://localhost:3000/turma/06652edb-2dfa-4ff9-b4f4-4e44179a4bd6

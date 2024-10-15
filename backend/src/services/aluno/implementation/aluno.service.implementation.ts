@@ -23,7 +23,7 @@ export class AlunoServiceImplementation implements AlunoService {
     telefone: string,
     anoEscolar: string,
     alfabetizado: boolean,
-    turma: string,
+    turmaId: string,
     turno: string
   ): Promise<AlunoCreateOutputDto> {
     const aluno = Aluno.create(
@@ -34,7 +34,7 @@ export class AlunoServiceImplementation implements AlunoService {
       anoEscolar,
       alfabetizado,
       turno,
-      turma
+      turmaId
     );
     await this.repository.save(aluno);
 
@@ -58,7 +58,7 @@ export class AlunoServiceImplementation implements AlunoService {
         telefone: a.telefone,
         anoEscolar: a.anoEscolar,
         alfabetizado: a.alfabetizado,
-        turma: a.turma,
+        turmaId: a.turmaId,
         turno: a.turno,
       })),
     };
@@ -73,10 +73,9 @@ export class AlunoServiceImplementation implements AlunoService {
     telefone: string,
     anoEscolar: string,
     alfabetizado: boolean,
-    turma: string,
+    turmaId: string,
     turno: string
   ): Promise<AlunoUpdateOutputDto> {
-    
     const aluno = await this.repository.findById(id);
     if (!aluno) {
       throw new HttpError(`Aluno ${id} não encontrado`, 404);
@@ -89,7 +88,7 @@ export class AlunoServiceImplementation implements AlunoService {
       telefone,
       anoEscolar,
       alfabetizado,
-      turma,
+      turmaId,
       turno
     );
     await this.repository.update(updatedAluno);
@@ -97,7 +96,7 @@ export class AlunoServiceImplementation implements AlunoService {
       id: updatedAluno.id,
       nome: updatedAluno.nome,
       anoEscolar: updatedAluno.anoEscolar,
-      turma: updatedAluno.turma,
+      turmaId: updatedAluno.turmaId,
       turno: updatedAluno.turno,
     };
     return output;
@@ -116,7 +115,7 @@ export class AlunoServiceImplementation implements AlunoService {
       telefone: aluno.telefone,
       anoEscolar: aluno.anoEscolar,
       alfabetizado: aluno.alfabetizado,
-      turma: aluno.turma,
+      turmaId: aluno.turmaId,
       turno: aluno.turno,
     };
     return output;

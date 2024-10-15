@@ -17,7 +17,7 @@ export type AlunoListOutputDto = {
     telefone: string;
     anoEscolar: string;
     alfabetizado: boolean;
-    turma: string;
+    turmaId: string;
     turno: string;
   }[];
 };
@@ -26,7 +26,7 @@ export type AlunoUpdateOutputDto = {
   id: string;
   nome: string;
   anoEscolar: string;
-  turma: string;
+  turmaId: string;
   turno: string;
 };
 
@@ -38,7 +38,7 @@ export type AlunoDetailOutputDto = {
   telefone: string;
   anoEscolar: string;
   alfabetizado: boolean;
-  turma: string;
+  turmaId: string;
   turno: string;
 };
 
@@ -50,7 +50,7 @@ export interface AlunoService {
     telefone: string,
     anoEscolar: string,
     alfabetizado: boolean,
-    turma: string,
+    turmaId: string,
     turno: string
   ): Promise<AlunoCreateOutputDto>;
 
@@ -64,7 +64,7 @@ export interface AlunoService {
     telefone: string,
     anoEscolar: string,
     alfabetizado: boolean,
-    turma: string,
+    turmaId: string,
     turno: string
   ): Promise<AlunoUpdateOutputDto>;
 
