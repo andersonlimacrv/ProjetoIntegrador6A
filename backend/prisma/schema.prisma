@@ -34,6 +34,17 @@ model Aluno {
 
   @@map("alunos")
 }
+model Turma {
+  id           String  @id @default(uuid())
+  nome_turma   String
+  idade        Int
+  turno        String
+  escola       String
+  renda_mensal Float
+  alunos       Aluno[] @relation("TurmasAluno") // Relacionamento 1:N com Aluno
+
+  @@map("turmas")
+}
 
 model Endereco {
   id                String  @id @default(uuid())
@@ -134,17 +145,6 @@ model Aniversario {
   @@map("aniversarios")
 }
 
-model Turma {
-  id           String  @id @default(uuid())
-  nome_turma   String
-  idade        Int
-  turno        String
-  escola       String
-  renda_mensal Float
-  alunos       Aluno[] @relation("TurmasAluno") // Relacionamento 1:N com Aluno
-
-  @@map("turmas")
-}
 
 model AlunoFamiliar {
   id         String   @id @default(uuid())
