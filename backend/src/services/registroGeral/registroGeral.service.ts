@@ -14,9 +14,20 @@ export type RegistroGeralCreateOutputDto = {
 
 export type RegistroGeralOutputDto = RegistroGeralCreateOutputDto;
 
+
 export type RegistroGeralListOutputDto = {
-  registrosGerais: RegistroGeralCreateOutputDto[];
-};
+  registrosGerais: {
+    id: string;
+    cpf: string;
+    rg: string;
+    dataEmissaoRg: Date;
+    rendaFamiliar: number;
+    bolsaFamilia: boolean;
+    direitoImagem: boolean;
+    alunoId: string;
+    responsavelId: string;
+  }[];
+}
 
 export interface RegistroGeralService {
   create(
