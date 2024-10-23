@@ -14,7 +14,7 @@ export class RegistroGeralServiceimplementation implements RegistroGeralService 
 
   public static build(repository: RegistroGeralRepository) {
     return new RegistroGeralServiceimplementation(repository);
-  
+    
 }
   public async create(
     cpf: string,

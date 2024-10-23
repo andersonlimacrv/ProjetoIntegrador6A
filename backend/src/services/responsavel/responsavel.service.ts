@@ -29,4 +29,6 @@ export interface ResponsavelService {
   findById(id: string): Promise<ResponsavelOutputDto>;
 
   deleteById(id: string): Promise<void>;
+
+  findByFamiliarId(familiarId: string): Promise<ResponsavelOutputDto>;
 }

@@ -4,8 +4,6 @@ import { prisma } from "../../../utils/prisma.util";
 import { AlunoServiceImplementation } from "../../../services/aluno/implementation/aluno.service.implementation";
 import { HttpError } from "../../error/http.error";
 
-// Unificação dos controladores Aluno e Endereço
-
 export class AlunoController {
   private constructor() {}
 

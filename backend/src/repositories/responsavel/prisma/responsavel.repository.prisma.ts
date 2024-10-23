@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Familiar } from "../../../entities/familiar";
+import { Responsavel } from "../../../entities/responsavel";
 
 export class FamiliarRepositoryPrisma {
   constructor(readonly prisma: PrismaClient) {}
@@ -8,80 +8,63 @@ export class FamiliarRepositoryPrisma {
     return new FamiliarRepositoryPrisma(prisma);
   }
 
-  public async save(familiar: Familiar): Promise<void> {
+  public async save(responsavel: Responsavel): Promise<void> {
     const data = {
-      id: familiar.id,
-      nome: familiar.nome,
-      parentesco: familiar.parentesco,
-      telefone: familiar.telefone,
-      autorizado_buscar: familiar.autorizadoBuscar,
-      responsavel: familiar.responsavel,
+      parentesco: responsavel.parentesco,
+      familiarId: responsavel.familiarId,
     };
-    await this.prisma.familiar.create({ data });
+
+    await this.prisma.responsavel.create({ data });
   }
 
-  public async findById(id: string): Promise<Familiar | null> {
-    const data = await this.prisma.familiar.findUnique({ where: { id } });
+  public async findById(id: string): Promise<Responsavel | null> {
+    const data = await this.prisma.responsavel.findUnique({ where: { id } });
     if (!data) {
       return null;
     }
-    return Familiar.with(
+    return Responsavel.with(
       data.id,
-      data.nome,
       data.parentesco,
-      data.telefone,
-      data.autorizado_buscar,
-      data.responsavel
+      data.familiarId
     );
   }
 
-  public async findByIdWithAlunoId(id: string): Promise<Familiar | null> {
-    const data = await this.prisma.familiar.findUnique({
-      where: { id },
-    });
-    if (!data) {
-      return null;
-    }
-    return Familiar.with(
-      data.id,
-      data.nome,
-      data.parentesco,
-      data.telefone,
-      data.autorizado_buscar,
-      data.responsavel
-    );
-  }
-
-
-  public async list(): Promise<Familiar[]> {
-    const data = await this.prisma.familiar.findMany();
+  public async list(): Promise<Responsavel[]> {
+    const data = await this.prisma.responsavel.findMany();
     if (!data) {
       return [];
     }
     return data.map((f) =>
-      Familiar.with(
+      Responsavel.with(
         f.id,
-        f.nome,
         f.parentesco,
-        f.telefone,
-        f.autorizado_buscar,
-        f.responsavel
+        f.familiarId
       )
     );
   }
 
-  public async update(familiar: Familiar): Promise<void> {
-    const data = {
-      nome: familiar.nome,
-      parentesco: familiar.parentesco,
-      telefone: familiar.telefone,
-      autorizado_buscar: familiar.autorizadoBuscar,
-      responsavel: familiar.responsavel,
-    };
-    await this.prisma.familiar.update({ where: { id: familiar.id }, data });
+  public async deleteById(id: string): Promise<void> {
+    await this.prisma.responsavel.delete({ where: { id } });
   }
 
-  public async deleteById(id: string): Promise<void> {
-    await this.prisma.familiar.delete({ where: { id } });
+  public async update(responsavel: Responsavel): Promise<void> {
+    const data = {
+      parentesco: responsavel.parentesco,
+      familiarId: responsavel.familiarId,
+    };
+    await this.prisma.responsavel.update({ where: { id: responsavel.id }, data });
   }
+
+  public async findByFamiliarId(familiarId: string): Promise<Responsavel | null> {
+    const data = await this.prisma.responsavel.findFirst({ where: { familiarId } });
+    if (!data) {
+      return null;
+    }
+    return Responsavel.with(
+      data.id,
+      data.parentesco,
+      data.familiarId
+    );
+  }
+ 
 }
