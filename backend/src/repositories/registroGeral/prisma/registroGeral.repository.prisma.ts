@@ -83,4 +83,27 @@ export class RegistroGeralRepositoryPrisma {
   public async deleteById(id: string): Promise<void> {
     await this.prisma.registroGeral.delete({ where: { id } });
   }
+
+  public async findByIdWithAlunoId (
+    id: string
+  ): Promise<RegistroGeral | null> {
+    const data = await this.prisma.registroGeral.findUnique({
+      where: { id },
+      include: { aluno: true },
+    });
+    if (!data) {
+      return null;
+    }
+    return RegistroGeral.with(
+      data.id,
+      data.cpf,
+      data.rg,
+      data.data_emissao_rg,
+      data.renda_familiar,
+      data.bolsa_familia,
+      data.direito_imagem,
+      data.alunoId,
+      data.responsavelId
+    );
+  }
 }

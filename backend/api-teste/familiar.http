@@ -1,0 +1,45 @@
+### 1. Listar todos os familiares
+GET http://localhost:3000/familiar
+Accept: application/json
+
+### 2. Criar um novo familiar (válido)
+POST http://localhost:3000/familiar/create
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "parentesco": "Pai",
+  "telefone": "99999-9999",
+  "autorizado_buscar": true,
+  "responsavel": true,
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31"
+}
+
+### 3. Criar um novo familiar 
+POST http://localhost:3000/familiar/create
+Content-Type: application/json
+
+{
+  "nome": "Maria da Silva",
+  "parentesco": "Mae",
+  "telefone": "88888-8888",
+  "autorizado_buscar": false,
+  "responsavel": false,
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31"
+}
+
+### 4. Atualizar um familiar existente (válido)
+PUT http://localhost:3000/familiar/d1c4e414-6eb6-442d-8882-4f8eb39c7dc4
+Content-Type: application/json
+
+{
+  "nome": "José da Silva",
+  "parentesco": "Tio",
+  "telefone": "77777-7777",
+  "autorizado_buscar": false,
+  "responsavel": false
+}
+
+### 5. Deletar um familiar existente
+DELETE http://localhost:3000/familiar/5842acc6-ea80-453a-ae62-454961e026f5
+Accept: application/json

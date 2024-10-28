@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { AlunoRepositoryPrisma } from "../../../repositories/aluno/prisma/aluno.repository.prisma";
-import { prisma } from "../../../utils/prisma.util";
 import { AlunoServiceImplementation } from "../../../services/aluno/implementation/aluno.service.implementation";
 import { HttpError } from "../../error/http.error";
+import { prisma } from "../../../utils/prisma.util";
 
 export class AlunoController {
   private constructor() {}

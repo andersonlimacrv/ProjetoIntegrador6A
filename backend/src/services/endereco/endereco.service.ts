@@ -51,6 +51,7 @@ export interface EnderecoService {
     alunoId: string,
     complemento?: string
   ): Promise<EnderecoCreateOutputDto>;
+  
   list(): Promise<EnderecoListOutputDto>;
 
   update(

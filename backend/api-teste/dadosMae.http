@@ -1,0 +1,41 @@
+### 1. Listar todos os dados de mães
+GET http://localhost:3000/dadosMae
+Accept: application/json
+
+### 2. Criar dados de mãe (válido)
+POST http://localhost:3000/dadosMae/create
+Content-Type: application/json
+
+{
+  "trabalha_fora": true,
+  "com_quem_deixar": "Avó",
+  "interesse_culinaria_costura": false,
+  "qual_projeto": "Projeto de costura",
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31"
+}
+
+### 3. Criar dados de mãe (inválido - trabalha_fora ausente)
+POST http://localhost:3000/dadosMae/create
+Content-Type: application/json
+
+{
+  "com_quem_deixar": "Tia",
+  "interesse_culinaria_costura": true,
+  "qual_projeto": "Projeto de culinária",
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31"
+}
+
+### 4. Atualizar dados de mãe existente (válido)
+PUT http://localhost:3000/dadosMae/d1c4e414-6eb6-442d-8882-4f8eb39c7dc4
+Content-Type: application/json
+
+{
+  "trabalha_fora": false,
+  "com_quem_deixar": "Creche",
+  "interesse_culinaria_costura": true,
+  "qual_projeto": "Projeto de culinária"
+}
+
+### 5. Deletar dados de mãe existente
+DELETE http://localhost:3000/dadosMae/5842acc6-ea80-453a-ae62-454961e026f5
+Accept: application/json

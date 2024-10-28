@@ -7,4 +7,5 @@ export interface DadosMaeRepository {
   findByIdWithAlunoId(id: string): Promise<DadosMae | null>;
   list(): Promise<DadosMae[]>;
   deleteById(id: string): Promise<void>;
+  findByAlunoId(alunoId: string): Promise<DadosMae | null>;
 }

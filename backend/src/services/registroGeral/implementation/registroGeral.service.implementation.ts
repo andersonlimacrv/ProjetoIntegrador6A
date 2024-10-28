@@ -9,11 +9,11 @@ import { RegistroGeralRepository } from "../../../repositories/registroGeral/reg
 import { HttpError } from "../../../api/error/http.error";
 
 
-export class RegistroGeralServiceimplementation implements RegistroGeralService {
+export class RegistroGeralServiceImplementation implements RegistroGeralService {
   private constructor(readonly repository: RegistroGeralRepository) {}
 
   public static build(repository: RegistroGeralRepository) {
-    return new RegistroGeralServiceimplementation(repository);
+    return new RegistroGeralServiceImplementation(repository);
     
 }
   public async create(

@@ -12,8 +12,15 @@ export type DadosMaeCreateOutputDto = {
 export type DadosMaeOutputDto = DadosMaeCreateOutputDto;
 
 export type DadosMaeListOutputDto = {
-  dadosMae: DadosMaeCreateOutputDto[];
-};
+  dadosMaes: {
+    id: string;
+    trabalhaFora: boolean;
+    comQuemDeixar: string;
+    interesseCulinariaCostura: boolean;
+    alunoId: string;
+    qualProjeto?: string;
+  }[];
+}
 
 export interface DadosMaeService {
   create(
@@ -38,4 +45,6 @@ export interface DadosMaeService {
   findById(id: string): Promise<DadosMaeOutputDto>;
 
   deleteById(id: string): Promise<void>;
+
+  findByAlunoId(alunoId: string): Promise<DadosMaeOutputDto | null>;
 }

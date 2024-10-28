@@ -1,0 +1,49 @@
+### 1. Listar todos os registros gerais
+GET http://localhost:3000/registroGeral
+Accept: application/json
+
+### 2. Criar um novo registro geral (válido)
+POST http://localhost:3000/registroGeral/create
+Content-Type: application/json
+
+{
+  "cpf": "123.456.789-00",
+  "rg": "MG-12.345.678",
+  "data_emissao_rg": "2024-01-01T00:00:00.000Z",
+  "renda_familiar": 2500.0,
+  "bolsa_familia": true,
+  "direito_imagem": false,
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31",
+  "responsavelId": "1f8b9c00-89d8-42d4-9b27-1a2b0ae57655"
+}
+
+### 3. Criar um novo registro geral (inválido - campo CPF ausente)
+POST http://localhost:3000/registroGeral/create
+Content-Type: application/json
+
+{
+  "rg": "SP-12.345.678",
+  "data_emissao_rg": "2024-01-01T00:00:00.000Z",
+  "renda_familiar": 3000.0,
+  "bolsa_familia": false,
+  "direito_imagem": true,
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31",
+  "responsavelId": "1f8b9c00-89d8-42d4-9b27-1a2b0ae57655"
+}
+
+### 4. Atualizar um registro geral existente (válido)
+PUT http://localhost:3000/registroGeral/d1c4e414-6eb6-442d-8882-4f8eb39c7dc4
+Content-Type: application/json
+
+{
+  "cpf": "987.654.321-00",
+  "rg": "RJ-98.765.432",
+  "data_emissao_rg": "2025-05-10T00:00:00.000Z",
+  "renda_familiar": 4000.0,
+  "bolsa_familia": true,
+  "direito_imagem": true
+}
+
+### 5. Deletar um registro geral existente
+DELETE http://localhost:3000/registroGeral/5842acc6-ea80-453a-ae62-454961e026f5
+Accept: application/json

@@ -96,4 +96,19 @@ export class DadosMaeRepositoryPrisma {
   public async deleteById(id: string): Promise<void> {
     await this.prisma.dadosMae.delete({ where: { id } });
   }
+
+  public async findAllByAlunoId(alunoId: string): Promise<DadosMae | null> {
+    const data = await this.prisma.dadosMae.findFirst({ where: { alunoId } });
+    if (!data) {
+      return null;
+    }
+    return DadosMae.with(
+      data.id,
+      data.trabalha_fora,
+      data.com_quem_deixar,
+      data.interesse_culinaria_costura,
+      data.qual_projeto || "",
+      data.alunoId
+    );
+  }
 }

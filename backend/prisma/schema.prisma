@@ -74,15 +74,6 @@ model Familiar {
   @@map("familiares")
 }
 
-model Responsavel {
-  id         String          @id @default(uuid())
-  parentesco String
-  familiarId String
-  familiar   Familiar        @relation("ResponsavelFamiliar", fields: [familiarId], references: [id], onDelete: Cascade)
-  registros  RegistroGeral[]
-
-  @@map("responsaveis")
-}
 
 model RegistroGeral {
   id              String      @id @default(uuid())
@@ -154,4 +145,14 @@ model AlunoFamiliar {
   familiar   Familiar @relation("AlunoFamiliarFamiliar", fields: [familiarId], references: [id], onDelete: Cascade)
 
   @@map("alunos_familiares")
+}
+
+model Responsavel {
+  id         String          @id @default(uuid())
+  parentesco String
+  familiarId String
+  familiar   Familiar        @relation("ResponsavelFamiliar", fields: [familiarId], references: [id], onDelete: Cascade)
+  registros  RegistroGeral[]
+
+  @@map("responsaveis")
 }

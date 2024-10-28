@@ -1,0 +1,36 @@
+### 1. Listar todas as famílias
+GET http://localhost:3000/familia
+Accept: application/json
+
+### 2. Criar uma nova família (válido)
+POST http://localhost:3000/familia/create
+Content-Type: application/json
+
+{
+  "numero_filhos": 2,
+  "irmao_instituicao": true,
+  "alunoId": "392803e0-f8d3-448a-bf05-3e7bb865bc31"
+}
+
+### 3. Criar uma nova família (inválido - alunoId ausente)
+POST http://localhost:3000/familia/create
+Content-Type: application/json
+
+{
+  "numero_filhos": 2,
+  "irmao_instituicao": true
+}
+
+### 4. Atualizar uma família existente (válido)
+PUT http://localhost:3000/familia/d1c4e414-6eb6-442d-8882-4f8eb39c7dc4
+Content-Type: application/json
+
+{
+  "numero_filhos": 3,
+  "irmao_instituicao": false,
+  "alunoId": "93afca09-e0a6-4640-ac45-35763f2c02c6"
+}
+
+### 5. Deletar uma família existente
+DELETE http://localhost:3000/familia/5842acc6-ea80-453a-ae62-454961e026f5
+Accept: application/json
