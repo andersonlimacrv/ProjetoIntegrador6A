@@ -128,13 +128,15 @@ model DadosAdicionais {
 }
 
 model Aniversario {
-  id               String   @id @default(uuid())
-  data_aniversario DateTime
-  alunoId          String
-  aluno            Aluno    @relation("AniversariosAluno", fields: [alunoId], references: [id], onDelete: Cascade)
+  id                String   @id @default(uuid())
+  data_nascimento   DateTime
+  proximo_aniversario DateTime?
+  alunoId           String
+  aluno             Aluno    @relation("AniversariosAluno", fields: [alunoId], references: [id], onDelete: Cascade)
 
   @@map("aniversarios")
 }
+
 
 
 model AlunoFamiliar {

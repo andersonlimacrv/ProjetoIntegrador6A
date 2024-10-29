@@ -7,8 +7,10 @@ import { FamiliaController } from "./api/express/controllers/familia.controller"
 import { FamiliarController } from "./api/express/controllers/familiar.controller";
 import { RegistroGeralController } from "./api/express/controllers/registroGeral.controller";
 import { DadosMaeController } from "./api/express/controllers/dadosMae.controller";
+import cron from "node-cron";
+import updateNextBirthdays from "./utils/updateNextBirthday";
 
-function main(){
+function main() {
   const api = ApiExpress.build();
 
   const alunoController = AlunoController.build();
@@ -20,7 +22,27 @@ function main(){
   const registroGeralController = RegistroGeralController.build();
   const dadosMaeController = DadosMaeController.build();
 
-
+  /* MIDNIGHT SCHEDULE - Update next birthdays */
+  cron.schedule("0 0 * * *", () => {
+    console.log("Executando a atualização diária dos próximos aniversários...");
+    updateNextBirthdays().catch((error) => {
+      console.error("Erro ao atualizar próximos aniversários:", error);
+    });
+  });
+  /* ROTA DE UPDATE NEXT BIRTHDAYS */
+  api.addGetRoute("/updateNextBirthdays", async (req, res) => {
+    try {
+      await updateNextBirthdays();
+      res
+        .status(200)
+        .json({ message: "Próximos aniversários atualizados com sucesso!" });
+    } catch (error) {
+      console.error("Erro ao atualizar os próximos aniversários:", error);
+      res
+        .status(500)
+        .json({ error: "Erro ao atualizar os próximos aniversários" });
+    }
+  });
 
   /* ROTAS DE ALUNOS */
   api.addGetRoute("/alunos", alunoController.list);
@@ -62,10 +84,9 @@ function main(){
   api.addPostRoute("/dadosMae/create", dadosMaeController.create);
   api.addDeleteRoute("/dadosMae/:id", dadosMaeController.delete);
   api.addPutRoute("/dadosMae/:id", dadosMaeController.update);
-  
+
   const PORT: number = Number(process.env.BACKEND_PORT) || 3000;
   api.start(PORT);
-
 }
 
 main();
