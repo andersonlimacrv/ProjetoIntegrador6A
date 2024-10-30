@@ -8,7 +8,7 @@ import { FamiliarController } from "./api/express/controllers/familiar.controlle
 import { RegistroGeralController } from "./api/express/controllers/registroGeral.controller";
 import { DadosMaeController } from "./api/express/controllers/dadosMae.controller";
 import cron from "node-cron";
-import updateNextBirthdays from "./utils/updateNextBirthday";
+import updateNextBirthdays from "./utils/updateNextBirthday.util";
 
 function main() {
   const api = ApiExpress.build();

@@ -1,6 +1,3 @@
-import { Endereco } from "../../entities/endereco";
-import { Aluno } from "../../entities/aluno";
-
 export type EnderecoCreateOutputDto = {
   id: string;
   cep: string;
