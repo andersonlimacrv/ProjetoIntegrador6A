@@ -1,7 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { Familia } from "../../../entities/familia";
+import { FamiliaRepository } from "../familia.repository";
 
-export class FamiliaRepositoryPrisma {
+export class FamiliaRepositoryPrisma implements FamiliaRepository {
   constructor(readonly prisma: PrismaClient) {}
 
   public static build(prisma: PrismaClient) {

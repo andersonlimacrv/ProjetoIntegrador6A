@@ -1,8 +1,8 @@
 import { Turma } from "../../../entities/turma";
 import { PrismaClient } from "@prisma/client";
+import { TurmaRepository } from "../turma.repository";
 
-
-export class TurmaRepositoryPrisma {
+export class TurmaRepositoryPrisma implements TurmaRepository {
   constructor(readonly prisma: PrismaClient) {}
 
   public static build(prisma: PrismaClient) {
@@ -32,7 +32,7 @@ export class TurmaRepositoryPrisma {
       data.idade,
       data.turno,
       data.escola,
-      data.renda_mensal,
+      data.renda_mensal
     );
   }
 
@@ -42,14 +42,7 @@ export class TurmaRepositoryPrisma {
       return [];
     }
     return data.map((t) =>
-      Turma.with(
-        t.id,
-        t.nome_turma,
-        t.idade,
-        t.turno,
-        t.escola,
-        t.renda_mensal,
-      )
+      Turma.with(t.id, t.nome_turma, t.idade, t.turno, t.escola, t.renda_mensal)
     );
   }
 

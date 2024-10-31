@@ -1,7 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { DadosAdicionais } from "../../../entities/dadosAdicionais";
+import { DadosAdicionaisRepository } from "../dadosAdicionais.repository";
 
-export class DadosAdicionaisRepositoryPrisma {
+export class DadosAdicionaisRepositoryPrisma implements DadosAdicionaisRepository {
   constructor(readonly prisma: PrismaClient) {}
 
   public static build(prisma: PrismaClient) {

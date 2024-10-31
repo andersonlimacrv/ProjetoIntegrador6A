@@ -1,7 +1,8 @@
 import { Endereco } from "../../../entities/endereco";
 import { PrismaClient } from "@prisma/client";
+import { EnderecoRepository } from "../endereco.repository";
 
-export class EnderecoRepositoryPrisma {
+export class EnderecoRepositoryPrisma implements EnderecoRepository {
 
   constructor(readonly prisma: PrismaClient) {}
 

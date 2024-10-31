@@ -1,11 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import { Responsavel } from "../../../entities/responsavel";
+import { ResponsavelRepository } from "../responsavel.repository";
 
-export class FamiliarRepositoryPrisma {
+export class ResponsavelRepositoryPrisma implements ResponsavelRepository {
   constructor(readonly prisma: PrismaClient) {}
 
   public static build(prisma: PrismaClient) {
-    return new FamiliarRepositoryPrisma(prisma);
+    return new ResponsavelRepositoryPrisma(prisma);
   }
 
   public async save(responsavel: Responsavel): Promise<void> {

@@ -1,7 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { RegistroGeral } from "../../../entities/registroGeral";
+import { RegistroGeralRepository } from "../registroGeral.repository";
 
-export class RegistroGeralRepositoryPrisma {
+export class RegistroGeralRepositoryPrisma implements RegistroGeralRepository {
   constructor(readonly prisma: PrismaClient) {}
 
   public static build(prisma: PrismaClient) {
@@ -84,9 +85,7 @@ export class RegistroGeralRepositoryPrisma {
     await this.prisma.registroGeral.delete({ where: { id } });
   }
 
-  public async findByIdWithAlunoId (
-    id: string
-  ): Promise<RegistroGeral | null> {
+  public async findByIdWithAlunoId(id: string): Promise<RegistroGeral | null> {
     const data = await this.prisma.registroGeral.findUnique({
       where: { id },
       include: { aluno: true },

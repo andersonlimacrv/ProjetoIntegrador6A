@@ -3,18 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import { IAniversarioRepository } from "../aniversario.repository";
 
 export class AniversarioRepositoryPrisma implements IAniversarioRepository {
-
-
-  /* model Aniversario {
-  id                String   @id @default(uuid())
-  data_nascimento   DateTime
-  proximo_aniversario DateTime?
-  alunoId           String
-  aluno             Aluno    @relation("AniversariosAluno", fields: [alunoId], references: [id], onDelete: Cascade)
-
-  @@map("aniversarios")
-}
- */
+  
   constructor(readonly prisma: PrismaClient) {}
 
   public static build(prisma: PrismaClient) {
