@@ -9,9 +9,9 @@ const NavLinks: React.FC = () => {
     <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
       <Link to="/in/dashboard">
         <div
-          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+          className={`flex items-center hover:bg-primary/40 gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/dashboard"
-              ? "bg-muted text-accent"
+              ? "bg-primary/10 text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -21,9 +21,9 @@ const NavLinks: React.FC = () => {
       </Link>
       <Link to="/in/page1">
         <div
-          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+          className={`flex items-center hover:bg-primary/40 gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page1"
-              ? "bg-muted text-accent"
+              ? "bg-primary/10 text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -33,9 +33,9 @@ const NavLinks: React.FC = () => {
       </Link>
       <Link to="/in/page2">
         <div
-          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+          className={`flex items-center hover:bg-primary/40 gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page2"
-              ? "bg-muted text-accent"
+              ? "bg-primary/10 text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -45,9 +45,9 @@ const NavLinks: React.FC = () => {
       </Link>
       <Link to="/in/page3">
         <div
-          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+          className={`flex items-center hover:bg-primary/40 gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page3"
-              ? "bg-muted text-accent"
+              ? "bg-primary/10 text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -57,9 +57,9 @@ const NavLinks: React.FC = () => {
       </Link>
       <Link to="/in/page4">
         <div
-          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+          className={`flex items-center hover:bg-primary/40 gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page4"
-              ? "bg-muted text-accent"
+              ? "bg-primary/10 text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
@@ -69,9 +69,9 @@ const NavLinks: React.FC = () => {
       </Link>
       <Link to="/in/page5">
         <div
-          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+          className={`flex items-center hover:bg-primary/40 gap-3 rounded-lg px-3 py-2 ${
             location.pathname === "/in/page5"
-              ? "bg-muted text-accent"
+              ? "bg-primary/10 text-accent"
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
