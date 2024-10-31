@@ -10,6 +10,8 @@ import ProtectedPage from "@/pages/ProtectedPage";
 import Page1 from "@/pages/dashboard/Page1";
 import Page2 from "@/pages/dashboard/Page2";
 import Page3 from "@/pages/dashboard/Page3";
+import Page4 from "@/pages/dashboard/Page4";
+import Page5 from "@/pages/dashboard/Page5";
 import Dashboard from "./pages/dashboard";
 
 import { ThemeProvider } from "./components/providers/theme-provider";
@@ -52,6 +54,8 @@ function App() {
             <Route path="page1" element={<Page1 />} />
             <Route path="page2" element={<Page2 />} />
             <Route path="page3" element={<Page3 />} />
+            <Route path="page4" element={<Page4 />} />
+            <Route path="page5" element={<Page5 />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />

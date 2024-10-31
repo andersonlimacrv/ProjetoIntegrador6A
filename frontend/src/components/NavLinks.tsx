@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Package, Users } from "lucide-react";
+import { Home, Package, Users, Group, Cake } from "lucide-react";
 import { IoMdPersonAdd } from "react-icons/io";
 
 const NavLinks: React.FC = () => {
@@ -28,7 +28,7 @@ const NavLinks: React.FC = () => {
           }`}
         >
           <IoMdPersonAdd className="h-4 w-4" />
-          Página 1
+          Cadastro aluno
         </div>
       </Link>
       <Link to="/in/page2">
@@ -40,7 +40,7 @@ const NavLinks: React.FC = () => {
           }`}
         >
           <Package className="h-4 w-4" />
-          Página 2
+          Listagem alunos
         </div>
       </Link>
       <Link to="/in/page3">
@@ -51,8 +51,32 @@ const NavLinks: React.FC = () => {
               : "text-muted-foreground hover:text-foreground transition-all"
           }`}
         >
+          <Cake className="h-4 w-4" />
+          Listagem aniversários
+        </div>
+      </Link>
+      <Link to="/in/page4">
+        <div
+          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+            location.pathname === "/in/page4"
+              ? "bg-muted text-accent"
+              : "text-muted-foreground hover:text-foreground transition-all"
+          }`}
+        >
+          <Group className="h-4 w-4" />
+          Formar turmas
+        </div>
+      </Link>
+      <Link to="/in/page5">
+        <div
+          className={`flex items-center hover:bg-muted gap-3 rounded-lg px-3 py-2 ${
+            location.pathname === "/in/page5"
+              ? "bg-muted text-accent"
+              : "text-muted-foreground hover:text-foreground transition-all"
+          }`}
+        >
           <Users className="h-4 w-4" />
-          Página 3
+          Listagem turmas
         </div>
       </Link>
     </nav>
