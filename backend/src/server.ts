@@ -61,11 +61,6 @@ function main() {
   api.addPostRoute("/endereco/create", enderecoController.create);
   api.addDeleteRoute("/endereco/:id", enderecoController.delete);
   api.addPutRoute("/endereco/:id", enderecoController.update);
-  /* ROTAS DE TURMAS */
-  api.addGetRoute("/turma//list", turmaController.list);
-  api.addPostRoute("/turma/create", turmaController.create);
-  api.addDeleteRoute("/turma/:id", turmaController.delete);
-  api.addPutRoute("/turma/:id", turmaController.update);
   /* ROTAS DADOS ADICIONAIS */
   api.addGetRoute("/dadosAdicionais/list", dadosAdicionaisController.list);
   api.addPostRoute("/dadosAdicionais/create", dadosAdicionaisController.create);
@@ -91,7 +86,7 @@ function main() {
   api.addPostRoute("/dadosMae/create", dadosMaeController.create);
   api.addDeleteRoute("/dadosMae/:id", dadosMaeController.delete);
   api.addPutRoute("/dadosMae/:id", dadosMaeController.update);
-
+  
   /* ROTAS ALUNO FAMILIAR */
   api.addGetRoute("/alunoFamiliar/list", alunoFamiliarController.list);
   api.addPostRoute("/alunoFamiliar/create", alunoFamiliarController.create);
@@ -99,20 +94,25 @@ function main() {
   api.addPutRoute("/alunoFamiliar/:id", alunoFamiliarController.update);
   api.addGetRoute("/alunoFamiliar/aluno/:alunoId", alunoFamiliarController.getByAlunoId);
   api.addGetRoute("/alunoFamiliar/familiar/:familiarId", alunoFamiliarController.getByFamiliarId);
-
+  
   /* ROTAS DE ANIVERSARIO */
   api.addGetRoute("/aniversario/list", aniversarioController.list);
   api.addPostRoute("/aniversario/create", aniversarioController.create);
   api.addDeleteRoute("/aniversario/:id", aniversarioController.delete);
   api.addPutRoute("/aniversario/:id", aniversarioController.update);
-
+  
   /* ROTAS DE RESPONSAVEL */
   api.addGetRoute("/responsavel/list", responsavelController.list);
   api.addPostRoute("/responsavel/create", responsavelController.create);
   api.addDeleteRoute("/responsavel/:id", responsavelController.delete);
   api.addPutRoute("/responsavel/:id", responsavelController.update);
   api.addGetRoute("/responsavel/:id", responsavelController.getById);
-
+  
+  /* ROTAS DE TURMAS */
+  api.addGetRoute("/turma//list", turmaController.list);
+  api.addPostRoute("/turma/create", turmaController.create);
+  api.addDeleteRoute("/turma/:id", turmaController.delete);
+  api.addPutRoute("/turma/:id", turmaController.update);
 
   const PORT: number = Number(process.env.BACKEND_PORT) || 3000;
   api.start(PORT);
